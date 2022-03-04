@@ -53,6 +53,11 @@ static inline int ring_empty(ring_buffer_t *ring)
     return !((ring->write_idx - ring->read_idx) % CONFIG_LIB_SHARED_RINGBUFFER_DESC_COUNT);
 }
 
+static inline int used_queue_size(ring_handle_t *ring)
+{
+    return (ring->used_ring->write_idx - ring->used_ring->read_idx);
+}
+
 /**
  * Check if the ring buffer is full
  *
